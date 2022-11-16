@@ -1,6 +1,7 @@
 mapboxgl.accessToken = mapToken;
 
-const campground = JSON.parse(stringCampground)
+// const campground = JSON.parse(stringCampground)
+const campground = stringCampground
 const coordinates = campground.geometry.coordinates
 
 const map = new mapboxgl.Map({

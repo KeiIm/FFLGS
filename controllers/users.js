@@ -26,9 +26,9 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.loginRedirect = (req, res) => {
     req.flash('success', 'welcome back');
-    console.log(req.session.returnTo) //REMOVE - why undefined???
+    console.log("returnTo = " + req.session.returnTo) //undefined
     const redirectUrl = req.session.returnTo || '/campgrounds';
-    //delete req.session.returnTo; //Not necessary now that returnTo is created at app.use
+    delete req.session.returnTo;
     res.redirect(redirectUrl);
 };
 
