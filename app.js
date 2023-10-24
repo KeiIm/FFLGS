@@ -136,7 +136,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-    if (!['/login', '/'].includes(req.originalUrl)) {
+    if (!['/login', '/', '/favicon.ico'].includes(req.originalUrl)) {
         req.session.returnTo = req.originalUrl;
     }
     console.log("app.use req.session.returnTo = " + req.session.returnTo)
