@@ -2,7 +2,7 @@
 
 <div id="cluster-map"></div>
 
-<h1>All Campgrounds</h1>
+<h1>All Game Stores</h1>
 
 <% for (let campground of campgrounds) { %>
 <div class="card mb-3">
@@ -29,7 +29,7 @@
                         <%= campground.location %>
                     </small>
                 </p>
-                <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">View <%= campground.title%></a>
+                <a href="/gamestores/<%= campground._id %>" class="btn btn-primary">View <%= campground.title%></a>
             </div>
         </div>
     </div>

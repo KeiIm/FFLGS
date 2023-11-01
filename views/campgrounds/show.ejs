@@ -43,13 +43,13 @@
                     <%= campground.author.username %>
                 </li>
                 <li class="list-group-item">$<%= campground.price %>.00 /
-                    night</li>
+                    hour</li>
             </ul>
             <% if (currentUser && campground.author.equals(currentUser._id)) { %>
             <div class="card-body">
-                <a href="/campgrounds/<%=campground._id%>/edit" class="card-link btn btn-info"> Edit
+                <a href="/gamestores/<%=campground._id%>/edit" class="card-link btn btn-info"> Edit
                 </a>
-                <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                <form class="d-inline" action="/gamestores/<%=campground._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </div>
@@ -61,7 +61,7 @@
     <div class="col-6">
         <% if (currentUser) { %>
         <h2>Leave a Review</h2>
-        <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+        <form action="/gamestores/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
             <!-- <div class="mb-3">
                         <label for="rating">Rating</label>
                         <input class="form-range" type="range" min=1 max=5 name="review[rating]" id="rating">
@@ -105,7 +105,7 @@
                     <%=review.body%>
                 </p>
                 <% if (currentUser && review.author.equals(currentUser._id)) { %>
-                <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                <form action="/gamestores/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
                 <% } %>

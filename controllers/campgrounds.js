@@ -18,14 +18,14 @@ module.exports.createCampground = async (req, res, next) => {
         query: req.body.campground.location,
         limit: 1
     }).send();
-    const campground = new Campground(req.body.campground);
-    campground.geometry = geoData.body.features[0].geometry;
-    console.log(campground.geometry.coordinates) //Coordinates here disappear later
+    const campground = new Campground(req.body.campground)
+    campground.geometry = geoData.body.features[0].geometry
+    console.log(campground.geometry.coordinates)
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }))
-    campground.author = req.user._id;
+    campground.author = req.user._id
     await campground.save()
-    req.flash('success', 'Successfully made a new campground!')
-    res.redirect(`campgrounds/${campground._id}`)
+    req.flash('success', 'Successfully made a new gamestore!')
+    res.redirect(`gamestores/${campground._id}`)
 };
 
 module.exports.showCampground = async (req, res) => {
@@ -33,8 +33,8 @@ module.exports.showCampground = async (req, res) => {
         path: 'reviews', populate: { path: 'author' }
     }).populate('author'); //OG: .populate('reviews').populate('author');
     if (!campground) {
-        req.flash('error', 'Cannot find that campground!');
-        return res.redirect('/campgrounds')
+        req.flash('error', 'Cannot find that gamestore!');
+        return res.redirect('/gamestores')
     }
     res.render('campgrounds/show', { campground });
 };
@@ -42,8 +42,8 @@ module.exports.showCampground = async (req, res) => {
 module.exports.renderEditForm = async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     if (!campground) {
-        req.flash('error', 'Cannot find that campground!');
-        return res.redirect('/campgrounds')
+        req.flash('error', 'Cannot find that gamestore!');
+        return res.redirect('/gamestores')
     }
     res.render('campgrounds/edit', { campground });
 };
@@ -60,12 +60,12 @@ module.exports.updateCampground = async (req, res) => {
         await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
         console.log(campground)
     }
-    req.flash('success', 'Successfully updated campground!')
-    res.redirect(`../campgrounds/${campground._id}`);
+    req.flash('success', 'Successfully updated gamestore!')
+    res.redirect(`../gamestores/${campground._id}`);
 };
 
 module.exports.deleteCampground = async (req, res) => {
     await Campground.findByIdAndDelete(req.params.id);
-    req.flash('success', 'Deleted campground!')
-    res.redirect('../campgrounds');
+    req.flash('success', 'Deleted gamestore!')
+    res.redirect('../gamestores');
 };

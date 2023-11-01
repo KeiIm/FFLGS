@@ -2,8 +2,8 @@
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <h1 class="text-center mb-3">Edit Campground</h1>
-        <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form"
+        <h1 class="text-center mb-3">Edit Game Store</h1>
+        <form action="/gamestores/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form"
             enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -46,10 +46,10 @@
                 <% }) %>
             </div>
             <div class="mb-3">
-                <button class="btn btn-info">Update Campground</button>
+                <button class="btn btn-info">Update Game Store</button>
             </div>
         </form>
-        <form action="/campgrounds/<%=campground._id%>">
+        <form action="/gamestores/<%=campground._id%>">
             <button class="btn btn-primary">Back to Details</button>
         </form>
     </div>
