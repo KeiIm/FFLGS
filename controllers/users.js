@@ -26,7 +26,6 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.loginRedirect = (req, res) => {
     req.flash('success', 'Welcome Back!');
-    console.log("returnTo = " + req.session.returnTo) //undefined
     const redirectUrl = req.session.returnTo || '/gamestores';
     delete req.session.returnTo;
     res.redirect(redirectUrl);

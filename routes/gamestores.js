@@ -5,7 +5,7 @@ const { isLoggedIn, isAuthor, validateCampground } = require('../middleware')
 const campgrounds = require('../controllers/gamestores');
 const multer = require('multer');
 const { storage } = require('../cloudinary');
-const upload = multer({ storage }); // previously {dest: 'uploads/'}
+const upload = multer({ storage });
 
 
 router.route('/')

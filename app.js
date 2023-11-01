@@ -13,13 +13,12 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
-const helmet = require('helmet');
 
 const MongoStore = require('connect-mongo');
 
 const mongoSanitize = require('express-mongo-sanitize');
 
-const campgroundRoutes = require('./routes/gamestores');
+const gamestoreRoutes = require('./routes/gamestores');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
@@ -63,7 +62,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store,
     secret,
-    name: 'camper',
+    name: 'gamer',
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -98,7 +97,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/', userRoutes);
-app.use('/gamestores', campgroundRoutes);
+app.use('/gamestores', gamestoreRoutes);
 app.use('/gamestores/:id/reviews', reviewRoutes);
 
 
