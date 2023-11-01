@@ -1,4 +1,4 @@
-const Campground = require('../models/campground');
+const Campground = require('../models/gamestore');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
@@ -6,11 +6,11 @@ const { cloudinary } = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
     const campgrounds = await Campground.find({});
-    res.render('campgrounds/index', { campgrounds });
+    res.render('gamestores/index', { campgrounds });
 };
 
 module.exports.renderNewForm = (req, res) => {
-    res.render('campgrounds/new');
+    res.render('gamestores/new');
 };
 
 module.exports.createCampground = async (req, res, next) => {
@@ -36,7 +36,7 @@ module.exports.showCampground = async (req, res) => {
         req.flash('error', 'Cannot find that gamestore!');
         return res.redirect('/gamestores')
     }
-    res.render('campgrounds/show', { campground });
+    res.render('gamestores/show', { campground });
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -45,7 +45,7 @@ module.exports.renderEditForm = async (req, res) => {
         req.flash('error', 'Cannot find that gamestore!');
         return res.redirect('/gamestores')
     }
-    res.render('campgrounds/edit', { campground });
+    res.render('gamestores/edit', { campground });
 };
 
 module.exports.updateCampground = async (req, res) => {

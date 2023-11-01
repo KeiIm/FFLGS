@@ -19,7 +19,7 @@ const MongoStore = require('connect-mongo');
 
 const mongoSanitize = require('express-mongo-sanitize');
 
-const campgroundRoutes = require('./routes/campgrounds');
+const campgroundRoutes = require('./routes/gamestores');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 
